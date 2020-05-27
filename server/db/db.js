@@ -5,7 +5,8 @@ const utils = require('./utilities')
 module.exports = {
   getPosts,
   getPostById,
-  addPost
+  addPost,
+  updatePost
 }
 
 function getPosts () {
@@ -27,4 +28,10 @@ function addPost (post) {
     .insert(post)
     // GET CLARIFICATION HERE!!!
     .then(([id]) => id)
+}
+
+function updatePost (post, id) {
+  return db('Posts')
+    .update(post)
+    .where('id', id)
 }
