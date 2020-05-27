@@ -3,15 +3,16 @@ const db = require('knex')(config)
 
 module.exports = {
   getPosts,
-  getPost
+  getPostById
 }
 
 function getPosts () {
   return db('Posts')
 }
 
-function getPost (id) {
+function getPostById (id) {
   return db('Posts')
     .where('id', id)
     .first()
 }
+
