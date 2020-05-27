@@ -2,9 +2,16 @@ const config = require('../../knexfile').development
 const db = require('knex')(config)
 
 module.exports = {
-  getPosts
+  getPosts,
+  getPost
 }
 
 function getPosts () {
-  return db('posts')
+  return db('Posts')
+}
+
+function getPost (id) {
+  return db('Posts')
+    .where(id, 'id')
+    .first()
 }
