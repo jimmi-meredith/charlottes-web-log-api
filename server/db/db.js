@@ -1,5 +1,6 @@
 const config = require('../../knexfile').development
 const db = require('knex')(config)
+const utils = require('./utilities')
 
 module.exports = {
   getPosts,
@@ -20,5 +21,5 @@ function getPostById (id) {
 function addPost (post) {
   return db('Posts')
     .insert(post)
-    .select()
+    .then(([id]) => id)
 }

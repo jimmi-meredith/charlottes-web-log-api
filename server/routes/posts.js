@@ -28,8 +28,8 @@ router.post('/', (req, res) => {
     title: req.body.title,
     paragraphs: req.body.paragraphs
   }
-
   db.addPost(newPost)
+    .then(id => db.getPostById(id))
     .then(post => {
       res.json(post)
     })
