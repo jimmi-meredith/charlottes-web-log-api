@@ -12,9 +12,11 @@ router.get('/', (req, res) => {
     })
 })
 
-// POST /v1/posts
-router.post('/', (req, res) => {
-  db.addPost()
+// GET /v1/posts/:id
+router.get('/:id', (req, res) => {
+  const { id } = req.params
+
+  db.getPost(id)
     .then(post => {
       res.json(post)
     })

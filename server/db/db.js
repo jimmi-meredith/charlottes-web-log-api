@@ -12,6 +12,6 @@ function getPosts () {
 
 function getPost (id) {
   return db('Posts')
-    .where(id, 'id')
+    .where('id', id)
     .first()
 }
