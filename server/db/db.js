@@ -20,4 +20,5 @@ function getPostById (id) {
 function addPost (post) {
   return db('Posts')
     .insert(post)
+    .select()
 }

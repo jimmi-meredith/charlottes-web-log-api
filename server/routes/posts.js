@@ -16,7 +16,20 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   const { id } = req.params
 
-  db.getPost(id)
+  db.getPostById(id)
+    .then(post => {
+      res.json(post)
+    })
+})
+
+// POST /v1/posts
+router.post('/', (req, res) => {
+  const newPost = {
+    title: req.body.title,
+    paragraphs: req.body.paragraphs
+  }
+
+  db.addPost(newPost)
     .then(post => {
       res.json(post)
     })
