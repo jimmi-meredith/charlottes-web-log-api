@@ -3,7 +3,8 @@ const db = require('knex')(config)
 
 module.exports = {
   getPosts,
-  getPostById
+  getPostById,
+  addPost
 }
 
 function getPosts () {
@@ -16,3 +17,7 @@ function getPostById (id) {
     .first()
 }
 
+function addPost (post) {
+  return db('Posts')
+    .insert(post)
+}
