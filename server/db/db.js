@@ -20,6 +20,8 @@ module.exports = {
 function getPosts () {
   // returning all posts in Posts table
   return db('Posts')
+    .then(posts => posts.map(parseParagraphs))
+    .then(posts => posts.map(utils.convertSnakeToCamelCase))
 }
 
 function getPostById (id) {
