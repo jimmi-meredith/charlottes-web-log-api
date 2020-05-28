@@ -90,6 +90,8 @@ function addPostComment (comment) {
 }
 
 function updateComment (id, comment) {
+  comment = utils.convertCamelToSnakeCase(comment)
+
   return db('Comments')
     .where('id', id)
     .update(comment)
