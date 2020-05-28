@@ -13,7 +13,8 @@ module.exports = {
   addPostComment,
   updateComment,
   deleteComment,
-  stringifyParagraphs
+  stringifyParagraphs,
+  parseParagraphs
 }
 
 function getPosts () {
@@ -84,5 +85,10 @@ function deleteComment (id) {
 
 function stringifyParagraphs (post) {
   post.paragraphs = JSON.stringify(post.paragraphs)
+  return post
+}
+
+function parseParagraphs (post) {
+  post.paragraphs = JSON.parse(post.paragraphs)
   return post
 }
