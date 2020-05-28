@@ -11,7 +11,8 @@ module.exports = {
   getPostComments,
   getCommentById,
   addPostComment,
-  updateComment
+  updateComment,
+  deleteComment
 }
 
 function getPosts () {
@@ -72,4 +73,10 @@ function updateComment (id, comment) {
   return db('Comments')
     .where('id', id)
     .update(comment)
+}
+
+function deleteComment (id) {
+  return db('Comments')
+    .where('id', id)
+    .delete()
 }
