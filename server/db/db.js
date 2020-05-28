@@ -9,7 +9,8 @@ module.exports = {
   updatePost,
   deletePost,
   getPostComments,
-  addPostComment
+  addPostComment,
+  updateComment
 }
 
 function getPosts () {
@@ -58,4 +59,10 @@ function addPostComment (comment) {
   return db('Comments')
     .insert(comment)
     .then(([postId]) => postId)
+}
+
+function updateComment (id, comment) {
+  return db('Comments')
+    .where('id', id)
+    .update(comment)
 }
