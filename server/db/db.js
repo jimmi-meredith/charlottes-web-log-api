@@ -38,7 +38,7 @@ function getPostById (id) {
 
 function addPost (post) {
   post = stringifyParagraphs(post)
-  post = utils.convertCamelToSnakeCase
+  post = utils.convertCamelToSnakeCase(post)
   // generates the cunnret time and date of when the post is added and assigns it to dateCreated property
   post.dateCreated = new Date(Date.now())
 
@@ -51,7 +51,7 @@ function addPost (post) {
 
 function updatePost (id, post) {
   post = stringifyParagraphs(post)
-  post = utils.convertCamelToSnakeCase
+  post = utils.convertCamelToSnakeCase(post)
 
   return db('Posts')
     .where('id', id)
