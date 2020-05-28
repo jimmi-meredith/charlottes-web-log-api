@@ -18,4 +18,14 @@ router.put('/:commentId', (req, res) => {
     })
 })
 
+// DELETE /v1/comments/:commentId
+router.delete('/:commentId', (req, res) => {
+  const { commentId } = req.params
+
+  db.deleteComment(commentId)
+    .then(() => {
+      res.json({})
+    })
+})
+
 module.exports = router
