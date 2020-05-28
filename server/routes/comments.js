@@ -14,4 +14,13 @@ router.get('/:postId/comments', (req, res) => {
     })
 })
 
+// POST /v1/posts/:postId/comments
+router.post('/:postId/comments', (req, res) => {
+  const { postId } = req.params
+  const { comment } = req.body
+
+  db.
+  }
+})
+
 module.exports = router

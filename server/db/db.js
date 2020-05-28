@@ -54,9 +54,8 @@ function getPostComments (postId) {
     .select()
 }
 
-function addPostComment (comment, postId) {
+function addPostComment (comment) {
   return db('Comments')
-    .where('post_id', postId)
     .insert(comment)
     .then(([postId]) => postId)
 }
