@@ -70,7 +70,7 @@ function getPostComments (postId) {
   return db('Comments')
   // post_id is a column in the comments table
     .where('post_id', postId)
-    .select()
+    .then(comments => comments.map(utils.convertSnakeToCamelCase))
 }
 
 function getCommentById (id) {
