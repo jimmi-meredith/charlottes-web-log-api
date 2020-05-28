@@ -77,6 +77,7 @@ function getCommentById (id) {
   return db('Comments')
     .where('id', id)
     .first()
+    .then(utils.convertSnakeToCamelCase)
 }
 
 function addPostComment (comment) {
