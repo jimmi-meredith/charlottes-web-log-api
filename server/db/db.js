@@ -50,6 +50,9 @@ function addPost (post) {
 }
 
 function updatePost (id, post) {
+  post = stringifyParagraphs(post)
+  post = utils.convertCamelToSnakeCase
+
   return db('Posts')
     .where('id', id)
   // updates the chosen post
