@@ -50,7 +50,7 @@ router.put('/:id', (req, res) => {
     paragraphs: req.body.paragraphs
   }
   // takes the post from req.body and the id from the params
-  db.updatePost(post, id)
+  db.updatePost(id, post)
   // renders the chosen post after it has been updated
     .then(() => db.getPostById(id))
     .then(post => {
@@ -71,7 +71,7 @@ router.delete('/:id', (req, res) => {
 // GET /v1/posts/:postId/comments
 router.get('/:postId/comments', (req, res) => {
   const { postId } = req.params
-
+  // retreives the comments that match a posts id
   db.getPostComments(postId)
     .then(comments => {
       res.json(comments)

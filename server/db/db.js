@@ -8,7 +8,8 @@ module.exports = {
   addPost,
   updatePost,
   deletePost,
-  getPostComments
+  getPostComments,
+  addPostComment
 }
 
 function getPosts () {
@@ -32,7 +33,7 @@ function addPost (post) {
     .then(([id]) => id)
 }
 
-function updatePost (post, id) {
+function updatePost (id, post) {
   return db('Posts')
     .where('id', id)
   // updates the chosen post
@@ -51,4 +52,11 @@ function getPostComments (postId) {
   // post_id is a column in the comments table
     .where('post_id', postId)
     .select()
+}
+
+function addPostComment (comment, postId) {
+  return db('Comments')
+    .where('post_id', postId)
+    .insert(comment)
+    .then(([postId]) => postId)
 }
