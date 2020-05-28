@@ -6,7 +6,8 @@ module.exports = {
   getPosts,
   getPostById,
   addPost,
-  updatePost
+  updatePost,
+  deletePost
 }
 
 function getPosts () {
@@ -34,5 +35,11 @@ function updatePost (post, id) {
   return db('Posts')
   // updates the chosen post
     .update(post)
+    .where('id', id)
+}
+
+function deletePost (post, id) {
+  return db('Posts')
+    .delete(post)
     .where('id', id)
 }
