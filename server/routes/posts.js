@@ -68,4 +68,14 @@ router.delete('/:id', (req, res) => {
       res.json(posts))
 })
 
+// GET /v1/posts/:postId/comments
+router.get('/:postId/comments', (req, res) => {
+  const { postId } = req.params
+
+  db.getPostComments(postId)
+    .then(comments => {
+      res.json(comments)
+    })
+})
+
 module.exports = router
