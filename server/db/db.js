@@ -9,6 +9,7 @@ module.exports = {
   updatePost,
   deletePost,
   getPostComments,
+  getCommentById,
   addPostComment,
   updateComment
 }
@@ -53,6 +54,12 @@ function getPostComments (postId) {
   // post_id is a column in the comments table
     .where('post_id', postId)
     .select()
+}
+
+function getCommentById (id) {
+  return db('Comments')
+    .where('id', id)
+    .first()
 }
 
 function addPostComment (comment) {
