@@ -33,14 +33,14 @@ function addPost (post) {
 
 function updatePost (post, id) {
   return db('Posts')
-  // updates the chosen post
     .where('id', id)
+  // updates the chosen post
     .update(post)
 }
 
 function deletePost (id) {
   return db('Posts')
-  // deletes the chosen post
     .where('id', id)
+  // deletes the chosen post
     .delete()
 }

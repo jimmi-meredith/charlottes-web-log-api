@@ -44,6 +44,7 @@ router.post('/', (req, res) => {
 // PUT /v1/posts/:id
 router.put('/:id', (req, res) => {
   const { id } = req.params
+  // what options are used for updating the post
   const post = {
     title: req.body.title,
     paragraphs: req.body.paragraphs
@@ -55,6 +56,16 @@ router.put('/:id', (req, res) => {
     .then(post => {
       res.json(post)
     })
+})
+
+// DELETE /v1/posts/:id
+router.delete('/:id', (req, res) => {
+  const { id } = req.params
+  // deletes post using id from params
+  db.deletePost(id)
+    .then(() => db.getPosts())
+    .then(posts =>
+      res.json(posts))
 })
 
 module.exports = router
