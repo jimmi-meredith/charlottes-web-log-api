@@ -37,6 +37,9 @@ function getPostById (id) {
 }
 
 function addPost (post) {
+  post = stringifyParagraphs(post)
+  post = utils.convertCamelToSnakeCase
+
   return db('Posts')
   // adds the new post to the Posts table
     .insert(post)
