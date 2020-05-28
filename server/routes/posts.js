@@ -78,6 +78,16 @@ router.get('/:postId/comments', (req, res) => {
     })
 })
 
+// GET /v1/posts/:postId/comments/:commentId
+router.get('/:postId/comments/:commentId', (req, res) => {
+  const { commentId } = req.params
+
+  db.getCommentById(commentId)
+    .then(comment => {
+      res.json(comment)
+    })
+})
+
 // POST /v1/posts/:postId/comments
 router.post('/:postId/comments', (req, res) => {
   const { postId } = req.params
