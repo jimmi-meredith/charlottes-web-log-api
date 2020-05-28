@@ -87,8 +87,9 @@ router.post('/:postId/comments', (req, res) => {
   }
 
   db.addPostComment(comment)
-    .then(id => {
-      res.json(id)
+    .then(() => db.getPostComments(postId))
+    .then(comments => {
+      res.json(comments)
     })
 })
 
