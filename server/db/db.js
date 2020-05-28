@@ -12,7 +12,8 @@ module.exports = {
   getCommentById,
   addPostComment,
   updateComment,
-  deleteComment
+  deleteComment,
+  stringifyParagraphs
 }
 
 function getPosts () {
@@ -79,4 +80,9 @@ function deleteComment (id) {
   return db('Comments')
     .where('id', id)
     .delete()
+}
+
+function stringifyParagraphs (post) {
+  post.paragraphs = JSON.stringify(post.paragraphs)
+  return post
 }
