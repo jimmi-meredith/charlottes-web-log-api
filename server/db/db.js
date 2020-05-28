@@ -81,6 +81,9 @@ function getCommentById (id) {
 }
 
 function addPostComment (comment) {
+  comment = utils.convertCamelToSnakeCase(comment)
+  comment.dateCreated = new Date(Date.now())
+
   return db('Comments')
     .insert(comment)
     .then(([postId]) => postId)
