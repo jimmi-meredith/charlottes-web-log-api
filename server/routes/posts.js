@@ -41,4 +41,20 @@ router.post('/', (req, res) => {
     })
 })
 
+// PUT /v1/posts/:id
+router.put('/:id', (req, res) => {
+  const { id } = req.params
+  const post = {
+    title: req.body.title,
+    paragraphs: req.body.paragraphs
+  }
+  // takes the post from req.body and the id from the params
+  db.updatePost(post, id)
+  // renders the chosen post after it has been updated
+    .then(() => db.getPostById(id))
+    .then(post => {
+      res.json(post)
+    })
+})
+
 module.exports = router

@@ -32,6 +32,7 @@ function addPost (post) {
 
 function updatePost (post, id) {
   return db('Posts')
+  // updates the chosen post
     .update(post)
     .where('id', id)
 }
