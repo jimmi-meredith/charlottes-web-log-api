@@ -22,6 +22,7 @@ function getPosts () {
   return db('Posts')
   // map over each post and turn the array of strings into a Javascript object
     .then(posts => posts.map(parseParagraphs))
+    // map over the keys in each post object and convert to camelCase
     .then(posts => posts.map(utils.convertSnakeToCamelCase))
 }
 
@@ -31,6 +32,8 @@ function getPostById (id) {
     .where('id', id)
     // selects the first post that matches so it is no longer one post in an array
     .first()
+    .then(parseParagraphs)
+    .then(utils.convertSnakeToCamelCase)
 }
 
 function addPost (post) {
